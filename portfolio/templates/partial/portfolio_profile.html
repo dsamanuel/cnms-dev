@@ -1,0 +1,53 @@
+
+{% load static %}
+   
+
+
+                      <section class="panel">
+
+                        <div class="x_title">
+                          <h2>Portfolio Description</h2>
+                          <div class="clearfix"></div>
+
+                        
+                        </div>
+                        <div class="panel-body">
+                          
+                          <!-- Current avatar -->
+                          {% if portfolio.logo %}
+                          <div id="crop-avatar">
+                          <img class="img-responsive avatar-view" src="{{portfolio.logo.url}}" alt="Avatar" title="Change the avatar">
+                        </div>
+                        {% else %}
+                          <h3 class="green"><i class="fa fa-university"></i> {{portfolio.title}}</h3>
+                        {% endif %}
+                          <p>{{portfolio.description}}</p>
+                        
+
+                          <div class="project_detail">
+                            <p class="title">Type</p>
+                            <p>{{portfolio.type}}</p>
+                            
+                           <p class="title">Category</p>
+                            <p>{{portfolio.category}}</p>
+                          
+                          <p class="title">Start Date</p>
+                            <p>{{portfolio.start_date}}</p>
+                          <p class="title">Address</p>
+                            <a href="{{ portfolio.address_url }}" target="_blank">{{ portfolio.address_url }}</a>
+                          </div>
+                          <br />
+                         </div>
+
+                          <div class="text-center mtop20">
+                          {% if perms.portfolio.can_change_portfolio %}
+                            <a class="btn btn-success" hx-get="{% url 'edit_portfolio' portfolio.id %}" hx-target = "#dialog"><i class="fa fa-edit m-right-xs"></i>Edit Profile</a>
+                      <br />
+                      {% endif%}
+                            
+                          </div>
+                        </div>
+
+                      </section>
+
+               
